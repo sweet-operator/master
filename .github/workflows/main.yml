@@ -9,7 +9,7 @@ on:
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-  REPO_NAME: ${{secrets.REPO_NAME}}
+
 jobs:
   push-image-to-docker-hub:  # job name
     runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
@@ -18,12 +18,8 @@ jobs:
     - name: docker login
       run: | # log into docker hub account
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
-    - name: Get current date # get the date of the build
-      id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
 
-    - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: akoskm/my-image:latest
+    - name: Build and push Docker image
+      run: |
+        docker build -t DOCKER_USER/my-rshiny-app:latest .
+        docker push DOCKER_USER/my-rshiny-app:latest
