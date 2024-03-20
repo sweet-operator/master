@@ -21,5 +21,5 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t DOCKER_USER/my-rshiny-app:latest .
-        docker push DOCKER_USER/my-rshiny-app:latest
+        docker build -t my-rshiny-app:latest .
+        docker push my-rshiny-app:latest
