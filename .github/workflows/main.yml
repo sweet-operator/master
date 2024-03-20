@@ -11,12 +11,12 @@ env:
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
 jobs:
-  push-image-to-docker-hub:  # job name
-    runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
+  push-image-to-docker-hub:  
+    runs-on: ubuntu-latest  
     steps:
-      - uses: actions/checkout@v2 # first action : checkout source code
+      - uses: actions/checkout@v2 
       - name: docker login
-        run: | # log into docker hub account
+        run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
 
       - name: Build Docker image
