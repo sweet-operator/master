@@ -14,13 +14,12 @@ jobs:
   push-image-to-docker-hub:  # job name
     runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
     steps:
-    - uses: actions/checkout@v2 # first action : checkout source code
-    - name: docker login
-      run: | # log into docker hub account
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
+      - uses: actions/checkout@v2 # first action : checkout source code
+      - name: docker login
+        run: | # log into docker hub account
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
 
       - name: Build and push Docker image
         run: |
-           docker build -t amina/master:latest -f ./../.. .
-           docker push amina/master:latest
-
+          docker build -t amina/master:latest -f ./../.. .
+          docker push amina/master:latest
