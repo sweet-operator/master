@@ -22,7 +22,8 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
 
-    - name: Build the Docker image # build push The image to the docker hub
-      run: |
-        docker build -t DOCKER_USER/REPO_NAME:latest .
-        docker push DOCKER_USER/REPO_NAME:latest
+    - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: akoskm/my-image:latest
