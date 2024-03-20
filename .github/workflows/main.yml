@@ -6,7 +6,7 @@ on:
       - main
 
   schedule:
-    - cron: '26 23 * * *'  # Adjusted to run at 23:20 UTC
+    - cron: '24 23 * * *'  # Adjusted to run at 23:20 UTC
       
 # Env variable
 env:
